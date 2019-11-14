@@ -7,4 +7,10 @@ include_directories(.)
 include_directories(src)
 
 add_executable(Tom_and_Jerry_Path
-        src/main.cpp)
+        src/main.cpp
+        src/StreamParser.cpp
+        src/StreamParser.h
+        src/Furniture.cpp
+        src/Furniture.h
+        src/Point.cpp
+        src/Point.h)

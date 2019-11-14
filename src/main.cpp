@@ -6,10 +6,17 @@
 #define TOM_AND_JERRY_PATH_MAIN_CPP
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include "StreamParser.h"
 
 int main() {
 
-    std::cout << "In progress.\n";
+    StreamParser streamParser("./src/instructions.txt");
+
+
+
+    std::cout << streamParser.getPaintPermissionedBlocks()[0][0];
 
     return 0;
 }
