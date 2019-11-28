@@ -8,9 +8,9 @@ include_directories(src)
 
 add_executable(Tom_and_Jerry_Path
         src/main.cpp
-        src/StreamParser.cpp
-        src/StreamParser.h
+        src/FileExtractor.cpp
+        src/FileExtractor.h
         src/Furniture.cpp
         src/Furniture.h
         src/Point.cpp
-        src/Point.h)
+        src/Point.h src/RawRoomModel.cpp src/RawRoomModel.h src/RoomModel.cpp src/RoomModel.h)

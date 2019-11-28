@@ -10,7 +10,11 @@
 
 class Point {
 public:
+    Point();
     Point(std::string coordinates);
+
+    int getX();
+    int getY();
 
 private:
     int x;

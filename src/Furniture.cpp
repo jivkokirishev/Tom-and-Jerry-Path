@@ -3,3 +3,7 @@
 //
 
 #include "Furniture.h"
+
+Furniture::Furniture(Point startingPoint, std::vector<std::string> furnitureMap) : startingPoint(startingPoint), furnitureMap(furnitureMap){
+
+}

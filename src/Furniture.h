@@ -12,7 +12,7 @@
 
 class Furniture {
 public:
-    Furniture(Point startingPoint);
+    Furniture(Point startingPoint, std::vector<std::string> furnitureMap);
 
 private:
     Point startingPoint;

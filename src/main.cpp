@@ -8,15 +8,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "StreamParser.h"
+#include "FileExtractor.h"
 
 int main() {
 
-    StreamParser streamParser("./src/instructions.txt");
-
-
-
-    std::cout << streamParser.getPaintPermissionedBlocks()[0][0];
+    FileExtractor streamParser("./src/instructions.txt");
 
     return 0;
 }
