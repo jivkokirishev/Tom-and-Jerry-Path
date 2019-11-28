@@ -17,6 +17,10 @@ public:
 private:
     Point startingPoint;
     std::vector<std::string> furnitureMap;
+public:
+    const Point &getStartingPoint() const;
+
+    const std::vector<std::string> &getFurnitureMap() const;
 
 };
 

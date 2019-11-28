@@ -14,7 +14,20 @@ class RawRoomModel {
 public:
     RawRoomModel(std::queue<std::string> fileLines);
 
+private:
     std::string roomSize;
+public:
+    const std::string &getRoomSize() const;
+
+    const std::string &getJerryCoordinates() const;
+
+    const std::string &getTomCoordinates() const;
+
+    const std::string &getFurnitureAndPaintBlocksNumber() const;
+
+    const std::vector<std::string> &getFurnituresAndPaintBlocks() const;
+
+private:
     std::string jerryCoordinates;
     std::string tomCoordinates;
     std::string furnitureAndPaintBlocksNumber;

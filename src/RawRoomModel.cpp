@@ -23,3 +23,23 @@ RawRoomModel::RawRoomModel(std::queue<std::string> fileLines) {
     }
 
 }
+
+const std::string &RawRoomModel::getRoomSize() const {
+    return roomSize;
+}
+
+const std::string &RawRoomModel::getJerryCoordinates() const {
+    return jerryCoordinates;
+}
+
+const std::string &RawRoomModel::getTomCoordinates() const {
+    return tomCoordinates;
+}
+
+const std::string &RawRoomModel::getFurnitureAndPaintBlocksNumber() const {
+    return furnitureAndPaintBlocksNumber;
+}
+
+const std::vector<std::string> &RawRoomModel::getFurnituresAndPaintBlocks() const {
+    return furnituresAndPaintBlocks;
+}

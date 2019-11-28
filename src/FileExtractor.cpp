@@ -8,15 +8,17 @@ FileExtractor::FileExtractor(std::string fileName) : fileName(fileName){
 
 }
 
-std::queue<std::string> FileExtractor::extractRawFile() {
-    std::queue<std::string> rawFileLines;
+std::queue<std::string> &FileExtractor::extractRawFile() {
+    std::queue<std::string>* rawFileLines = new std::queue<std::string>();
 
     std::ifstream file;
     file.open(fileName);
     std::string line;
     if (file.is_open()){
         while (std::getline(file, line)) {
-            rawFileLines.push(line);
+            rawFileLines->push(line);
         }
     }
+
+    return *rawFileLines;
 }

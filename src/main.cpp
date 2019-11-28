@@ -9,10 +9,19 @@
 #include <fstream>
 #include <string>
 #include "FileExtractor.h"
+#include "RoomModel.h"
 
 int main() {
 
     FileExtractor streamParser("./src/instructions.txt");
+
+    RoomModel room(RawRoomModel(streamParser.extractRawFile()));
+
+    for (int i = 0; i < room.getRoom().size(); ++i) {
+        std::cout << room.getRoom()[i] << std::endl;
+    }
+
+    std::cout << std::endl;
 
     return 0;
 }

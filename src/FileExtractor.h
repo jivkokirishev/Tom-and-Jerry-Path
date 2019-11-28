@@ -15,7 +15,7 @@ class FileExtractor {
 public:
     FileExtractor(std::string fileName);
 
-    std::queue<std::string> extractRawFile();
+    std::queue<std::string> &extractRawFile();
 
 private:
     std::string fileName;

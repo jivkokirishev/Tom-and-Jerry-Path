@@ -18,6 +18,16 @@ private:
     RawRoomModel rawRoomModel;
 
     Point jerryPosition;
+public:
+    const Point &getJerryPosition() const;
+
+    const Point &getTomPosition() const;
+
+    const std::vector<Point> &getPaintBlocks() const;
+
+    const std::vector<std::string> &getRoom() const;
+
+private:
     Point tomPosition;
     std::vector<Furniture> furnitures;
     std::vector<Point> paintBlocks;

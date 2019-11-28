@@ -13,11 +13,14 @@ public:
     Point();
     Point(std::string coordinates);
 
-    int getX();
-    int getY();
-
 private:
     int x;
+public:
+    int getX() const;
+
+    int getY() const;
+
+private:
     int y;
 
 };

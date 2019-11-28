@@ -16,11 +16,10 @@ Point::Point(std::string coordinates) {
     y = std::stoi(length);
 }
 
-int Point::getX() {
+int Point::getX() const {
     return x;
 }
 
-int Point::getY() {
+int Point::getY() const {
     return y;
 }
-
