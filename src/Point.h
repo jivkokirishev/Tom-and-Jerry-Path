@@ -12,6 +12,7 @@ class Point {
 public:
     Point();
     Point(std::string coordinates);
+    Point(int x, int y);
 
 private:
     int x;
@@ -19,6 +20,8 @@ public:
     int getX() const;
 
     int getY() const;
+
+    bool operator==(const Point& other) const;
 
 private:
     int y;

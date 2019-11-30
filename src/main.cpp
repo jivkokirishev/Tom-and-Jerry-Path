@@ -10,6 +10,8 @@
 #include <string>
 #include "FileExtractor.h"
 #include "RoomModel.h"
+#include "Step.h"
+#include "PathsFinder.h"
 
 int main() {
 
@@ -22,6 +24,17 @@ int main() {
     }
 
     std::cout << std::endl;
+
+    PathsFinder pathsFinder(room);
+
+    for(std::stack<Point> path : pathsFinder.bfsPaths(1)){
+        while(!path.empty()){
+            std::cout << path.top().getX() << " " << path.top().getY() << std::endl;
+            path.pop();
+        }
+        std::cout << std::endl << std::endl;
+    }
+
 
     return 0;
 }

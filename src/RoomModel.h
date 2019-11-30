@@ -27,6 +27,8 @@ public:
 
     const std::vector<std::string> &getRoom() const;
 
+    const int WALLS_OFFSET = 1;
+
 private:
     Point tomPosition;
     std::vector<Furniture> furnitures;

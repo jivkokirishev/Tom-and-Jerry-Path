@@ -23,3 +23,15 @@ int Point::getX() const {
 int Point::getY() const {
     return y;
 }
+
+bool Point::operator==(const Point &other) const {
+    if(this == &other){
+        return true;
+    }
+
+    return this->x == other.x && this->y == other.y;
+
+}
+
+Point::Point(int x, int y) : x(x), y(y){
+}
