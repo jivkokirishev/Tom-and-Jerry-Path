@@ -96,8 +96,8 @@ void RoomModel::createRoom() {
         }
     }
 
-    room[getTomPosition().getY() + 1][getTomPosition().getX() + 1] = 't';
-    room[getJerryPosition().getY() + 1][getJerryPosition().getX() + 1] = 'j';
+    room[getTomPosition().getY() + WALLS_OFFSET][getTomPosition().getX() + WALLS_OFFSET] = 't';
+    room[getJerryPosition().getY() + WALLS_OFFSET][getJerryPosition().getX() + WALLS_OFFSET] = 'j';
 }
 
 const Point &RoomModel::getJerryPosition() const {

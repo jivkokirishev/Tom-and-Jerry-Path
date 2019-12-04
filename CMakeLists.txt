@@ -21,4 +21,4 @@ add_executable(Tom_and_Jerry_Path
         src/PathsFinder.cpp
         src/PathsFinder.h
         src/Step.cpp
-        src/Step.h)
+        src/Step.h src/DroneInstructions.cpp src/DroneInstructions.h src/InstructionsBuilder.cpp src/InstructionsBuilder.h)

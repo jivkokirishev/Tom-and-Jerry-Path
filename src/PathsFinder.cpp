@@ -9,7 +9,6 @@ PathsFinder::PathsFinder(RoomModel model) : model(model){
 
 std::vector<std::stack<Point>> PathsFinder::bfsPaths(int maxPaths) {
     std::queue<Step*> paths;
-    std::vector<Point> visited;
 
     Step *tom = new Step(model.getTomPosition());
     paths.push(tom);

@@ -12,6 +12,7 @@
 #include "RoomModel.h"
 #include "Step.h"
 #include "PathsFinder.h"
+#include "InstructionsBuilder.h"
 
 int main() {
 
@@ -27,11 +28,16 @@ int main() {
 
     PathsFinder pathsFinder(room);
 
-    for(std::stack<Point> path : pathsFinder.bfsPaths(1)){
-        while(!path.empty()){
-            std::cout << path.top().getX() << " " << path.top().getY() << std::endl;
-            path.pop();
+    InstructionsBuilder builder(room);
+
+    for(std::stack<Point> path : pathsFinder.bfsPaths(9)){
+        auto instructions = builder.createInstructionsByPath(path);
+        for (auto direction : instructions.getDirections()) {
+            std::cout << direction << "  ";
         }
+
+        std::cout << instructions.getTurnCount() << "  ";
+        std::cout << instructions.getPlacesToPaint().size();
         std::cout << std::endl << std::endl;
     }
 
