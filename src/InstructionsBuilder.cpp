@@ -7,39 +7,29 @@
 InstructionsBuilder::InstructionsBuilder(RoomModel room) : room(room) {
 }
 
-DroneInstructions InstructionsBuilder::createInstructionsByPath(std::stack<Point> path) {
-    auto pathCoordinates = generatePath(path);
-    auto instructions = generateInstructions(pathCoordinates);
+DroneInstructions InstructionsBuilder::createInstructionsByPath(Path path) {
+    auto instructions = generateInstructions(path);
     auto paintCoordinates = generatePlacesToPaint(path);
     unsigned int turnsCount = countTurns(instructions);
 
 
-    DroneInstructions droneInstructions(paintCoordinates, instructions, paintCoordinates, turnsCount);
+    DroneInstructions droneInstructions(path, instructions, paintCoordinates, turnsCount);
 
     return droneInstructions;
 }
 
-std::list<Point> InstructionsBuilder::generatePath(std::stack<Point> path) {
-    std::list<Point> listPath;
-
-    while (!path.empty()) {
-        listPath.push_back(path.top());
-        path.pop();
-    }
-
-    return listPath;
-}
-
-std::list<char> InstructionsBuilder::generateInstructions(std::list<Point> path) {
+std::list<char> InstructionsBuilder::generateInstructions(Path path) {
     std::list<char> instructions;
 
     instructions.push_back('B');
-    auto pathIter = path.begin();
-    auto beforeLast = --(path.end());
-    while (pathIter != beforeLast) {
-        Point currentPoint = *pathIter;
-        Point nextPoint = *(++pathIter);
-        instructions.push_back(findTurn(currentPoint, nextPoint));
+    auto pathIter = path.getIterator();
+    while (pathIter.valid()) {
+        Point currentPoint = pathIter.get();
+        pathIter.next();
+        if(pathIter.valid()){
+            Point nextPoint = pathIter.get();
+            instructions.push_back(findTurn(currentPoint, nextPoint));
+        }
     }
     instructions.push_back('F');
 
@@ -66,14 +56,15 @@ char InstructionsBuilder::findTurn(Point currentPoint, Point nextPoint) {
 
 }
 
-std::list<Point> InstructionsBuilder::generatePlacesToPaint(std::stack<Point> path) {
+std::list<Point> InstructionsBuilder::generatePlacesToPaint(Path path) {
     std::list<Point> placesToPaint;
 
-    while (!path.empty()) {
-        if (canBePainted(path.top())) {
-            placesToPaint.push_back(path.top());
+    auto pathIter = path.getIterator();
+    while (pathIter.valid()) {
+        if (canBePainted(pathIter.get())) {
+            placesToPaint.push_back(pathIter.get());
         }
-        path.pop();
+        pathIter.next();
     }
 
     return placesToPaint;

@@ -8,11 +8,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <zconf.h>
 #include "FileExtractor.h"
 #include "RoomModel.h"
 #include "Step.h"
 #include "PathsFinder.h"
 #include "InstructionsBuilder.h"
+#include "InstructionsTreeFactory.h"
 
 int main() {
 
@@ -30,7 +32,8 @@ int main() {
 
     InstructionsBuilder builder(room);
 
-    for(std::stack<Point> path : pathsFinder.bfsPaths(9)){
+    std::vector<DroneInstructions> drInstr;
+    for(Path path : pathsFinder.bfsPaths(9)){
         auto instructions = builder.createInstructionsByPath(path);
         for (auto direction : instructions.getDirections()) {
             std::cout << direction << "  ";
@@ -39,8 +42,21 @@ int main() {
         std::cout << instructions.getTurnCount() << "  ";
         std::cout << instructions.getPlacesToPaint().size();
         std::cout << std::endl << std::endl;
+
+        drInstr.push_back(instructions);
     }
 
+
+
+    InstructionsTreeFactory treeFactory;
+    InstructionsTree tree = treeFactory.createTree(drInstr);
+
+    std::ofstream file ("instructionTree.dot");
+    tree.dottyPrint(file);
+    file.close();
+
+    system("dot instructionTree.dot -Tpng -o instructionTree.png");
+    system("feh instructionTree.png");
 
     return 0;
 }

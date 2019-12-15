@@ -21,4 +21,16 @@ add_executable(Tom_and_Jerry_Path
         src/PathsFinder.cpp
         src/PathsFinder.h
         src/Step.cpp
-        src/Step.h src/DroneInstructions.cpp src/DroneInstructions.h src/InstructionsBuilder.cpp src/InstructionsBuilder.h)
+        src/Step.h
+        src/DroneInstructions.cpp
+        src/DroneInstructions.h
+        src/InstructionsBuilder.cpp
+        src/InstructionsBuilder.h
+        src/Path.cpp
+        src/Path.h
+        src/PathIterator.cpp
+        src/PathIterator.h
+        src/InstructionsTreeFactory.cpp
+        src/InstructionsTreeFactory.h
+        src/InstructionsTree.cpp
+        src/InstructionsTree.h src/Node.cpp src/Node.h src/Utility.cpp src/Utility.h)

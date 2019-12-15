@@ -7,7 +7,7 @@
 PathsFinder::PathsFinder(RoomModel model) : model(model){
 }
 
-std::vector<std::stack<Point>> PathsFinder::bfsPaths(int maxPaths) {
+std::vector<Path> PathsFinder::bfsPaths(int maxPaths) {
     std::queue<Step*> paths;
 
     Step *tom = new Step(model.getTomPosition());
@@ -15,7 +15,7 @@ std::vector<std::stack<Point>> PathsFinder::bfsPaths(int maxPaths) {
 
     Point jerryPosition = model.getJerryPosition();
 
-    std::vector<std::stack<Point>> shortestPaths;
+    std::vector<Path> shortestPaths;
 
     while(!paths.empty() && shortestPaths.size() < maxPaths)
     {
@@ -24,12 +24,8 @@ std::vector<std::stack<Point>> PathsFinder::bfsPaths(int maxPaths) {
 
         if(currentPath->getPosition() == jerryPosition)
         {
-            std::stack<Point> path;
-
-            while (currentPath != nullptr){
-                path.push(currentPath->getPosition());
-                currentPath = currentPath->getPreviousStep();
-            }
+            Path path;
+            path.constructPathFromReversedSteps(currentPath);
 
             shortestPaths.push_back(path);
         } else{
@@ -40,7 +36,6 @@ std::vector<std::stack<Point>> PathsFinder::bfsPaths(int maxPaths) {
         }
 
     }
-
 
     return shortestPaths;
 }

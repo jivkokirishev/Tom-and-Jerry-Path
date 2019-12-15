@@ -9,12 +9,13 @@
 #include <stack>
 #include "RoomModel.h"
 #include "Step.h"
+#include "Path.h"
 
 class PathsFinder {
 public:
     PathsFinder(RoomModel model);
 
-    std::vector<std::stack<Point>> bfsPaths(int maxPaths = 1);
+    std::vector<Path> bfsPaths(int maxPaths = 1);
 
 
 private:

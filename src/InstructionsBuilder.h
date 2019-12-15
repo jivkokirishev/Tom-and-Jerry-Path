@@ -8,19 +8,19 @@
 
 #include "DroneInstructions.h"
 #include "RoomModel.h"
+#include "Path.h"
 
 class InstructionsBuilder {
 public:
     InstructionsBuilder(RoomModel room);
 
-    DroneInstructions createInstructionsByPath(std::stack<Point> path);
+    DroneInstructions createInstructionsByPath(Path path);
 
 private:
     RoomModel room;
 
-    std::list<Point> generatePath(std::stack<Point> path);
-    std::list<char> generateInstructions(std::list<Point> path);
-    std::list<Point> generatePlacesToPaint(std::stack<Point> path);
+    std::list<char> generateInstructions(Path path);
+    std::list<Point> generatePlacesToPaint(Path path);
     unsigned int countTurns(std::list<char> instructions);
 
     char findTurn(Point currentPoint, Point nextPoint);

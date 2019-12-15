@@ -8,13 +8,14 @@
 #include <list>
 #include <stack>
 #include "Point.h"
+#include "Path.h"
 
 class DroneInstructions {
 public:
-    DroneInstructions(std::list<Point> path, std::list<char> instructions,
+    DroneInstructions(Path path, std::list<char> instructions,
                       std::list<Point> placesToPaint, unsigned int turnCount);
 
-    const std::list<Point> &getPathCoordinates() const;
+    const Path &getPathCoordinates() const;
 
     const std::list<char> &getDirections() const;
 
@@ -25,7 +26,7 @@ public:
     unsigned int getMaxPaintPlaces() const;
 
 private:
-    std::list<Point> pathCoordinates;
+    Path pathCoordinates;
     std::list<char> instructions;
     std::list<Point> placesToPaint;
     unsigned int turnCount;

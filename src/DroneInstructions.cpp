@@ -4,13 +4,13 @@
 
 #include "DroneInstructions.h"
 
-DroneInstructions::DroneInstructions(std::list<Point> path, std::list<char> instructions,
+DroneInstructions::DroneInstructions(Path path, std::list<char> instructions,
                                      std::list<Point> placesToPaint, unsigned int turnCount) :
         pathCoordinates(path), instructions(instructions),
         placesToPaint(placesToPaint), turnCount(turnCount) {
 }
 
-const std::list<Point> &DroneInstructions::getPathCoordinates() const {
+const Path &DroneInstructions::getPathCoordinates() const {
     return pathCoordinates;
 }
 
