@@ -12,12 +12,12 @@
 
 class DroneInstructions {
 public:
-    DroneInstructions(Path path, std::list<std::string> instructions,
-                      std::list<Point> placesToPaint, unsigned int turnCount, unsigned int stepsCount);
+    DroneInstructions(Path path, std::list<char> instructions,
+                      std::list<Point> placesToPaint, unsigned int turnCount);
 
-    Path &getPathCoordinates();
+    const Path &getPathCoordinates() const;
 
-    const std::list<std::string> &getDirections() const;
+    const std::list<char> &getDirections() const;
 
     const std::list<Point> &getPlacesToPaint() const;
 
@@ -25,14 +25,11 @@ public:
 
     unsigned int getMaxPaintPlaces() const;
 
-    unsigned int getStepsCount() const;
-
 private:
     Path pathCoordinates;
-    std::list<std::string> instructions;
+    std::list<char> instructions;
     std::list<Point> placesToPaint;
     unsigned int turnCount;
-    unsigned int stepsCount;
 };
 
 

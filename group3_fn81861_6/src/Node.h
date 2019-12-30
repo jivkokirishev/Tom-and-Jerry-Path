@@ -11,13 +11,13 @@
 
 class Node {
 public:
-    Node(std::string data);
-    void addBranch(std::list<std::string> instructions);
+    Node(char data);
+    void addBranch(std::list<char> instructions);
 
 private:
-    std::string data;
+    char data;
 public:
-    std::string getData() const;
+    char getData() const;
 
     const std::vector<Node *> &getChildren() const;
 

@@ -11,7 +11,8 @@
 
 class InstructionsTreeFactory {
 public:
-    InstructionsTree createTree(std::vector<DroneInstructions> droneInstructions);
+    InstructionsTree createTree(std::vector<DroneInstructions> droneInstruciotns);
+
 };
 
 

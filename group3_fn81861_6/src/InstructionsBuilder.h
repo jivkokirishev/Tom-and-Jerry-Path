@@ -19,14 +19,11 @@ public:
 private:
     RoomModel room;
 
-    std::list<std::string> generateInstructions(Path path);
+    std::list<char> generateInstructions(Path path);
     std::list<Point> generatePlacesToPaint(Path path);
-    unsigned int countTurns(std::list<std::string> instructions);
-    unsigned int countSteps(std::list<std::string> instructions);
-    void appendStats(std::list<std::string> &instructions, unsigned int stepsCount, unsigned int paintCount, unsigned int turnsCount);
+    unsigned int countTurns(std::list<char> instructions);
 
-
-    std::string findTurn(Point currentPoint, Point nextPoint);
+    char findTurn(Point currentPoint, Point nextPoint);
     bool canBePainted(Point coordinates);
 };
 

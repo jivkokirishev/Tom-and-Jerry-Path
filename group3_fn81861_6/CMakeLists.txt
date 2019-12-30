@@ -33,12 +33,4 @@ add_executable(Tom_and_Jerry_Path
         src/InstructionsTreeFactory.cpp
         src/InstructionsTreeFactory.h
         src/InstructionsTree.cpp
-        src/InstructionsTree.h
-        src/Node.cpp
-        src/Node.h
-        src/Utility.cpp
-        src/Utility.h
-        src/TwoDroneInstructions.cpp
-        src/TwoDroneInstructions.h)
-
-target_link_libraries (Tom_and_Jerry_Path sfml-graphics sfml-window sfml-system)
+        src/InstructionsTree.h src/Node.cpp src/Node.h src/Utility.cpp src/Utility.h)

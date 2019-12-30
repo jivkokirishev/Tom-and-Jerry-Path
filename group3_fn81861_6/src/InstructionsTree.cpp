@@ -9,7 +9,7 @@ InstructionsTree::InstructionsTree(Node *tree) : tree(tree) {
 
 void InstructionsTree::dottyPrint (std::ostream& out)
 {
-    out << "digraph InstructionsTree {" << std::endl;
+    out << "digraph G {" << std::endl;
     dottyPrintHelp (out, tree);
     out << "}";
 }

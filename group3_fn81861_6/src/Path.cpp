@@ -15,10 +15,6 @@ void Path::constructPathFromReversedSteps(Step *reversedSteps) {
     }
 }
 
-PathIterator Path::getIterator(){
+PathIterator Path::getIterator() {
     return PathIterator(steps.begin(), steps.end());
-}
-
-unsigned int Path::getStepsCount() const {
-    return steps.size() - 1;
 }

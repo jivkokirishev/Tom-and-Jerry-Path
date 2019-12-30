@@ -11,20 +11,17 @@ DroneInstructions InstructionsBuilder::createInstructionsByPath(Path path) {
     auto instructions = generateInstructions(path);
     auto paintCoordinates = generatePlacesToPaint(path);
     unsigned int turnsCount = countTurns(instructions);
-    unsigned int stepsCount = path.getStepsCount();
-
-    appendStats(instructions, stepsCount, paintCoordinates.size(), turnsCount);
 
 
-    DroneInstructions droneInstructions(path, instructions, paintCoordinates, turnsCount, stepsCount);
+    DroneInstructions droneInstructions(path, instructions, paintCoordinates, turnsCount);
 
     return droneInstructions;
 }
 
-std::list<std::string> InstructionsBuilder::generateInstructions(Path path) {
-    std::list<std::string> instructions;
+std::list<char> InstructionsBuilder::generateInstructions(Path path) {
+    std::list<char> instructions;
 
-    instructions.push_back("B");
+    instructions.push_back('B');
     auto pathIter = path.getIterator();
     while (pathIter.valid()) {
         Point currentPoint = pathIter.get();
@@ -34,25 +31,25 @@ std::list<std::string> InstructionsBuilder::generateInstructions(Path path) {
             instructions.push_back(findTurn(currentPoint, nextPoint));
         }
     }
-    //instructions.push_back("F");
+    instructions.push_back('F');
 
     return instructions;
 }
 
-std::string InstructionsBuilder::findTurn(Point currentPoint, Point nextPoint) {
+char InstructionsBuilder::findTurn(Point currentPoint, Point nextPoint) {
     if (currentPoint.getX() + 1 == nextPoint.getX()) {
-        return "E";
+        return 'E';
     }
     if (currentPoint.getX() - 1 == nextPoint.getX()) {
-        return "W";
+        return 'W';
     }
 
     if (currentPoint.getY() + 1 == nextPoint.getY()) {
-        return "S";
+        return 'S';
     }
 
     if (currentPoint.getY() - 1 == nextPoint.getY()) {
-        return "N";
+        return 'N';
     }
 
     return 0;
@@ -84,27 +81,18 @@ bool InstructionsBuilder::canBePainted(Point coordinates) {
     return false;
 }
 
-unsigned int InstructionsBuilder::countTurns(std::list<std::string> instructions) {
+unsigned int InstructionsBuilder::countTurns(std::list<char> instructions) {
 
     auto instructIter = instructions.begin();
     ++instructIter;
 
     unsigned int turnCount = 0;
     while (instructIter != instructions.end()) {
-        auto tmpInstruct = instructIter++;
-        if (*tmpInstruct != *instructIter) {
+        if (*instructIter != *(++instructIter)) {
             turnCount++;
         }
     }
-    turnCount -= 1;
+    turnCount -= 2;
 
     return turnCount;
-}
-
-void InstructionsBuilder::appendStats(std::list<std::string> &instructions, unsigned int stepsCount, unsigned int paintCount,
-                                      unsigned int turnsCount) {
-    std::string stats = "steps count: " + std::to_string(stepsCount) + "\npaint blocks count: " + std::to_string(paintCount) + "\nturns count: " + std::to_string(turnsCount);
-
-    instructions.push_back(stats);
-
 }

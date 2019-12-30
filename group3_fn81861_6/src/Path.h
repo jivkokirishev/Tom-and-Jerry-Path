@@ -17,8 +17,6 @@ public:
     void constructPathFromReversedSteps(Step* reversedSteps);
     PathIterator getIterator();
 
-    unsigned int getStepsCount() const;
-
 private:
     std::list<Point> steps;
 };

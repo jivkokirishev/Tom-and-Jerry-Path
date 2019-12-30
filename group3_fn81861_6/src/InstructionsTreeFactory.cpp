@@ -6,7 +6,7 @@
 
 InstructionsTree InstructionsTreeFactory::createTree(std::vector<DroneInstructions> droneInstructions) {
 
-    Node *tree = new Node("Start");
+    Node *tree = new Node(droneInstructions.front().getDirections().front());
 
     for (auto elem : droneInstructions) {
         tree->addBranch(elem.getDirections());

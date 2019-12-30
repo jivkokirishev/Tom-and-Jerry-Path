@@ -6,10 +6,10 @@
 #include "Node.h"
 #include "Utility.h"
 
-Node::Node(std::string data) : data(data) {
+Node::Node(char data) : data(data) {
 }
 
-std::string Node::getData() const {
+char Node::getData() const {
     return data;
 }
 
@@ -17,7 +17,7 @@ const std::vector<Node *> &Node::getChildren() const {
     return children;
 }
 
-void Node::addBranch(std::list<std::string> instructions) {
+void Node::addBranch(std::list<char> instructions) {
     auto instructIter = instructions.begin();
 
     Node *currentNode = this;
